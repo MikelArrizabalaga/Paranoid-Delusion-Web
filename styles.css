@@ -143,8 +143,8 @@ button {
   display:none
 }
 .route-status {
-  height:82px;
-  padding:7px clamp(20px,5vw,78px) 8px;
+  height:94px;
+  padding:12px clamp(20px,5vw,78px) 10px;
   display:flex;
   flex-direction:column;
   align-items:stretch;
@@ -203,7 +203,7 @@ button {
   width:100%;
   color:var(--route-accent);
   text-align:center;
-  line-height:1;
+  line-height:1.2;
   font-weight:700;
   white-space:nowrap
 }
@@ -230,7 +230,7 @@ button {
 }
 .rail-track {
   width:100%;
-  height:calc(100svh - 160px);
+  height:calc(100svh - 172px);
   overflow-x:hidden;
   overflow-y:auto;
   scroll-snap-type:y mandatory;
@@ -248,7 +248,7 @@ button {
 .railcar {
   position:relative;
   width:100%;
-  min-height:calc(100svh - 160px);
+  min-height:calc(100svh - 172px);
   scroll-snap-align:start;
   scroll-snap-stop:always;
   overflow:hidden;
@@ -261,8 +261,9 @@ button {
 .railcar .car-inner > .news-heading > *,
 .railcar .car-inner > .studio-heading > * {
   opacity:.3;
-  transform:translateY(12px);
-  transition:opacity .45s ease,transform .45s ease;
+  transform:translateY(18px) scale(.985);
+  filter:blur(4px);
+  transition:opacity .65s ease,transform .65s cubic-bezier(.22,.8,.24,1),filter .65s ease;
 }
 .railcar.is-current .car-inner > *,
 .railcar.is-current .car-inner > .hero-details > *,
@@ -271,7 +272,8 @@ button {
 .railcar.is-current .car-inner > .news-heading > *,
 .railcar.is-current .car-inner > .studio-heading > * {
   opacity:1;
-  transform:translateY(0);
+  transform:translateY(0) scale(1);
+  filter:blur(0);
 }
 .railcar.is-current .car-inner > *:nth-child(2) { transition-delay:.06s; }
 .railcar.is-current .car-inner > *:nth-child(3) { transition-delay:.12s; }
@@ -281,11 +283,12 @@ button {
   .railcar .car-inner > * > * {
     opacity:1;
     transform:none;
+    filter:none;
   }
 }
 .car-inner {
   width:min(100%,1500px);
-  min-height:calc(100svh - 160px);
+  min-height:calc(100svh - 172px);
   margin:auto;
   padding:clamp(28px,5vh,64px) clamp(24px,6vw,96px) 80px;
   position:relative;
@@ -1017,8 +1020,8 @@ button {
     background:#eee8dc
   }
   .route-status {
-    height:76px;
-    padding:6px 16px 8px;
+    height:88px;
+    padding:10px 16px 9px;
     gap:6px
   }
   .route-status .station-nav {
@@ -1049,13 +1052,13 @@ button {
     font-size:7px
   }
   .rail-track,.railcar {
-    min-height:calc(100svh - 136px)
+    min-height:calc(100svh - 148px)
   }
   .rail-track {
-    height:calc(100svh - 136px)
+    height:calc(100svh - 148px)
   }
   .car-inner {
-    min-height:calc(100svh - 136px);
+    min-height:calc(100svh - 148px);
     padding:24px 18px 68px
   }
   .platform-layout {
@@ -1596,11 +1599,11 @@ button {
     height:44px
   }
   .route-status {
-    height:42px;
-    padding-inline:clamp(28px,5vw,86px)
+    height:94px;
+    padding:12px clamp(28px,5vw,86px) 10px
   }
   .rail-track,.railcar,.car-inner {
-    min-height:calc(100svh - 132px)
+    min-height:calc(100svh - 184px)
   }
   .rail-track {
     height:calc(100svh - 132px)

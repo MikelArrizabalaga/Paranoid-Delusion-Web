@@ -53,6 +53,25 @@ function syncStationFromScroll() {
 railTrack.addEventListener('scroll', syncStationFromScroll, { passive: true });
 syncStationFromScroll();
 
+// Un gesto de rueda avanza una sola parada. Así el final de cada vagón se puede leer
+// sin que el siguiente aparezca por accidente.
+let wheelDistance = 0;
+let wheelLocked = false;
+railTrack.addEventListener('wheel', (event) => {
+  if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+  event.preventDefault();
+  if (wheelLocked) return;
+  wheelDistance += event.deltaY;
+  if (Math.abs(wheelDistance) < 90) return;
+  const step = wheelDistance > 0 ? 1 : -1;
+  wheelDistance = 0;
+  const nextIndex = Math.max(0, Math.min(activeIndex + step, railcars.length - 1));
+  if (nextIndex === activeIndex) return;
+  wheelLocked = true;
+  goToStation(nextIndex);
+  window.setTimeout(() => { wheelLocked = false; }, 850);
+}, { passive: false });
+
 railTrack.addEventListener('keydown', (event) => {
   if (event.target !== railTrack || !['ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown'].includes(event.key)) return;
   event.preventDefault();
