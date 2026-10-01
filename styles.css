@@ -212,7 +212,11 @@ button {
   font-style:normal
 }
 .route-status .station-nav {
-  height:auto;
+  position:absolute;
+  left:clamp(20px,5vw,78px);
+  right:clamp(20px,5vw,78px);
+  bottom:0;
+  height:24px;
   width:100%;
   justify-content:space-between;
   align-items:center;
@@ -1026,8 +1030,11 @@ button {
   }
   .route-status .station-nav {
     display:flex;
-    position:static;
-    height:20px;
+    position:absolute;
+    left:12px;
+    right:12px;
+    bottom:0;
+    height:22px;
     padding:0;
     background:transparent;
     border:0;
@@ -1962,7 +1969,7 @@ button {
   height:auto;
   margin:0 auto 14px;
   opacity:1;
-  filter:brightness(1.62) contrast(1.08) saturate(1.18) drop-shadow(0 0 18px #090711e6) drop-shadow(0 6px 12px #080812cc)
+  filter:brightness(1.72) contrast(1.12) saturate(1.35) drop-shadow(0 0 7px #ff426f) drop-shadow(0 0 18px #d92d74cc) drop-shadow(0 0 34px #6b4cff88) drop-shadow(0 6px 12px #080812cc)
 }
 .car-platform .genre {
   margin-bottom:13px;
