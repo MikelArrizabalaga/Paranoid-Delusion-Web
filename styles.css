@@ -1801,8 +1801,9 @@ button {
   opacity:1
 }
 .car-platform .developer-row img {
-  width:140px;
-  height:40px;
+  width:170px;
+  height:auto;
+  max-height:52px;
   filter:brightness(1.5) contrast(1.08) drop-shadow(0 4px 10px #080812cc)
 }
 .car-platform .button {
@@ -1850,6 +1851,10 @@ button {
   }
   .car-platform .developer-row {
     font-size:6px
+  }
+  .car-platform .developer-row img {
+    width:142px;
+    max-height:44px
   }
 }
 /* Acabado de lanzamiento: ritmo, focos y señales de estación */
