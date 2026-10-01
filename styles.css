@@ -217,6 +217,9 @@ button {
   right:clamp(20px,5vw,78px);
   bottom:0;
   height:24px;
+  z-index:4;
+  opacity:1;
+  visibility:visible;
   width:100%;
   justify-content:space-between;
   align-items:center;
@@ -227,6 +230,10 @@ button {
   flex:1 1 25%;
   justify-content:center;
   font-size:9px
+}
+.route-status .station-link,
+.route-status .station-link span {
+  color:#e3dfe3
 }
 .route-status .route-track {
   background:#9b98a3;
@@ -1969,7 +1976,7 @@ button {
   height:auto;
   margin:0 auto 14px;
   opacity:1;
-  filter:brightness(1.72) contrast(1.12) saturate(1.35) drop-shadow(0 0 7px #ff426f) drop-shadow(0 0 18px #d92d74cc) drop-shadow(0 0 34px #6b4cff88) drop-shadow(0 6px 12px #080812cc)
+  filter:brightness(1.58) contrast(1.1) saturate(1.2) drop-shadow(0 0 4px #ff6f91) drop-shadow(0 0 15px #c75b68cc) drop-shadow(0 6px 12px #080812cc)
 }
 .car-platform .genre {
   margin-bottom:13px;
