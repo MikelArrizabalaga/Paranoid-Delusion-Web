@@ -152,6 +152,7 @@ button {
   gap:7px;
   background:#393741;
   border-bottom:1px solid #fff3;
+  position:relative;
   color:#e6e4e0;
   font:9px var(--mono);
   letter-spacing:.1em
@@ -220,7 +221,7 @@ button {
   z-index:4;
   opacity:1;
   visibility:visible;
-  width:100%;
+  width:auto;
   justify-content:space-between;
   align-items:center;
   gap:0
