@@ -1216,14 +1216,14 @@ button {
     transition:none!important
   }
 }
-/* Identidad del juego: noche, violeta, cian y magenta del key art */
+/* Identidad del juego: noche, violeta, rojo y magenta del key art */
 .car-platform,.car-screening,.car-world,.car-news {
   --game-bg:#171521;
   --game-panel:#272039;
   --game-panel-soft:#33284a;
   --game-paper:#f3ede3;
   --game-muted:#b9b3c2;
-  --game-cyan:#66d2d1;
+  --game-red:#c75b68;
   --game-magenta:#d56b9b;
   background:var(--game-bg);
   color:var(--game-paper)
@@ -1244,16 +1244,16 @@ button {
   color:var(--game-muted)
 }
 .car-platform .breadcrumbs span:first-child,.car-platform .breadcrumbs span:nth-child(2),.car-platform .eyebrow,.car-platform .genre i,.car-platform .car-caption span:first-child,.car-screening .eyebrow,.car-screening .car-caption span:first-child,.car-news .eyebrow,.car-news .car-caption span:first-child {
-  color:var(--game-cyan)
+  color:var(--game-red)
 }
 .car-platform .hero-details h1,.car-screening .car-heading h2,.car-news .news-heading h2 {
   color:var(--game-paper)
 }
 .car-screening .car-heading h2 em,.car-news .news-heading h2 em {
-  color:var(--game-cyan)
+  color:var(--game-red)
 }
 .car-platform .status-dot {
-  background:var(--game-cyan)
+  background:var(--game-red)
 }
 .car-platform .tags span {
   border-color:#f3ede344;
@@ -1298,7 +1298,7 @@ button {
   color:var(--game-paper)
 }
 .car-screening .video-frame {
-  border-color:#66d2d155;
+  border-color:#c75b6855;
   box-shadow:0 24px 55px #07060d99
 }
 .car-screening .language-row {
@@ -1313,8 +1313,8 @@ button {
   color:var(--game-muted)
 }
 .car-screening .lang-chip:hover,.car-screening .lang-chip.is-active {
-  border-color:var(--game-cyan);
-  background:#66d2d11c;
+  border-color:var(--game-red);
+  background:#c75b681c;
   color:var(--game-paper)
 }
 .car-screening .trailer-label {
@@ -1330,7 +1330,7 @@ button {
   color:var(--game-paper)
 }
 .car-world .banner-copy h2 em {
-  color:var(--game-cyan)
+  color:var(--game-red)
 }
 .car-world .banner-copy>p:last-child,.car-world .banner-index {
   color:var(--game-muted)
@@ -1343,7 +1343,7 @@ button {
   color:var(--game-paper)
 }
 .car-world .gallery-row figcaption span {
-  color:var(--game-cyan)
+  color:var(--game-red)
 }
 .car-news .news-card {
   background:var(--game-panel);
@@ -1354,13 +1354,13 @@ button {
 }
 .car-news .news-card:hover {
   background:#3d2e58;
-  border-color:var(--game-cyan)
+  border-color:var(--game-red)
 }
 .car-news .news-card-top,.car-news .news-card-top time,.car-news .news-card p:not(.news-type),.car-news .news-lock,.car-news .news-card>a {
   color:var(--game-muted)
 }
 .car-news .news-card-top>span,.car-news .news-type,.car-news .news-card>a b,.car-news .news-links a,.car-news .news-lock b {
-  color:var(--game-cyan)
+  color:var(--game-red)
 }
 .car-news .news-card h3 {
   color:var(--game-paper)
@@ -1461,7 +1461,7 @@ button {
   inset:0;
   pointer-events:none;
   opacity:.048;
-  background-image:radial-gradient(circle,#66d2d1 1.7px,transparent 2.2px);
+  background-image:radial-gradient(circle,#c75b68 1.7px,transparent 2.2px);
   background-size:18px 18px;
   background-position:8px 10px;
   mix-blend-mode:screen
@@ -1644,7 +1644,7 @@ button {
   letter-spacing:.08em
 }
 .journey-number {
-  color:var(--game-cyan)
+  color:var(--game-red)
 }
 .journey-state {
   color:var(--game-muted);
@@ -1652,7 +1652,7 @@ button {
 }
 .journey-kicker {
   margin:0;
-  color:var(--game-cyan);
+  color:var(--game-red);
   font:10px var(--mono);
   letter-spacing:.1em
 }
@@ -1684,7 +1684,7 @@ button {
   position:absolute;
   inset:0;
   pointer-events:none;
-  background:radial-gradient(circle at 76% 38%,#66d2d11c 0,transparent 34%),linear-gradient(180deg,#0c0b12a8 0%,transparent 35%,#0c0b1266 100%);
+  background:radial-gradient(circle at 76% 38%,#c75b681c 0,transparent 34%),linear-gradient(180deg,#0c0b12a8 0%,transparent 35%,#0c0b1266 100%);
   mix-blend-mode:screen
 }
 .car-screening>.car-inner,.car-screening>.car-control {
@@ -1823,8 +1823,8 @@ button {
   color:var(--game-paper);
 }
 .car-platform .button-secondary:hover {
-  border-color:var(--game-cyan);
-  background:#2b4050eb;
+  border-color:var(--game-red);
+  background:#3d222deb;
   color:#fff;
 }
 .car-platform .hero-art-card {
@@ -1863,7 +1863,7 @@ button {
   outline-offset:4px
 }
 .station-link:focus-visible {
-  outline-color:#a5c1b2
+  outline-color:#d57984
 }
 .button:focus-visible,.car-control:focus-visible,.lang-chip:focus-visible {
   outline-color:var(--green)
@@ -1879,7 +1879,7 @@ button {
   position:absolute;
   top:clamp(22px,4vh,48px);
   right:clamp(24px,6vw,96px);
-  color:#66d2d17a;
+  color:#c75b687a;
   font:9px var(--mono);
   letter-spacing:.16em
 }
@@ -1891,14 +1891,14 @@ button {
   right:0;
   top:0;
   height:3px;
-  background:linear-gradient(90deg,var(--game-cyan),var(--game-magenta),transparent)
+  background:linear-gradient(90deg,var(--game-red),var(--game-magenta),transparent)
 }
 .car-screening .video-frame:after {
   content:'LIVE / OFFICIAL TRAILER';
   display:block;
   padding:8px 11px;
   background:#0c0b12;
-  color:#66d2d1;
+  color:#c75b68;
   font:8px var(--mono);
   letter-spacing:.14em;
   text-align:right
@@ -1909,7 +1909,7 @@ button {
   z-index:2;
   right:18px;
   top:16px;
-  color:#66d2d1;
+  color:#c75b68;
   font:8px var(--mono);
   letter-spacing:.14em
 }
@@ -1917,7 +1917,7 @@ button {
   border-top:3px solid var(--game-magenta)
 }
 .car-news .news-card:nth-child(2) {
-  border-top:3px solid var(--game-cyan)
+  border-top:3px solid var(--game-red)
 }
 .car-news .news-card:nth-child(3) {
   border-top:3px solid #8b6ab5
@@ -1933,10 +1933,10 @@ button {
   box-shadow:0 15px 35px #24232b0d
 }
 .station-link.is-active span,.route-current i {
-  color:#66d2d1
+  color:#c75b68
 }
 .station-link.is-active:after,.route-fill {
-  background:#66d2d1
+  background:#c75b68
 }
 .route-train {
   color:#f3ede3
