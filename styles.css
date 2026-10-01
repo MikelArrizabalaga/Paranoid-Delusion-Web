@@ -1778,6 +1778,9 @@ button {
   margin-bottom:13px;
   color:#f3ede3
 }
+.car-platform .store-actions {
+  justify-content:center;
+}
 .car-platform .summary {
   margin:0 auto 18px;
   color:#e0d9d9
