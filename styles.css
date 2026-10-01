@@ -159,8 +159,10 @@ button {
 .route-track {
   width:100%;
   height:5px;
+  flex:0 0 5px;
   position:relative;
-  background:#76727d
+  background:#9b98a3;
+  z-index:1
 }
 .route-fill {
   position:absolute;
