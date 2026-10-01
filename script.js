@@ -3,7 +3,7 @@ const railcars = [...document.querySelectorAll('.railcar:not(.car-news)')];
 const stationLinks = [...document.querySelectorAll('.station-link')];
 const routeStatus = document.querySelector('.route-status');
 const routeCurrent = document.querySelector('.route-current');
-const stationNames = ['ANDÉN', 'TRÁILER', 'EL VIAJE', 'EQUIPO'];
+const stationNames = ['PARADA', 'TRAILER', 'NOTICIAS', 'PARANOID DELUSION'];
 let activeIndex = 0;
 
 function goToStation(index, instant = false) {
