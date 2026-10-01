@@ -578,15 +578,6 @@ button {
   color:var(--ink);
   font-weight:400
 }
-.screening-logo {
-  grid-column:1;
-  grid-row:2;
-  width:min(100%,260px);
-  max-height:85px;
-  object-fit:contain;
-  object-position:left center;
-  margin-top:16px
-}
 .world-layout {
   gap:20px
 }
@@ -1110,13 +1101,6 @@ button {
     margin-left:auto;
     font-size:6px
   }
-  .screening-logo {
-    grid-column:1;
-    grid-row:3;
-    width:140px;
-    max-height:46px;
-    margin:0 auto
-  }
   .world-layout {
     gap:11px
   }
@@ -1335,9 +1319,6 @@ button {
 }
 .car-screening .trailer-label {
   color:var(--game-muted)
-}
-.car-screening .screening-logo {
-  filter:drop-shadow(0 1px 0 #000)
 }
 .car-world .world-banner {
   border-color:#f3ede344
@@ -1710,7 +1691,7 @@ button {
   position:relative;
   z-index:1
 }
-.car-screening .car-heading,.car-screening .screening-logo {
+.car-screening .car-heading {
   filter:drop-shadow(0 5px 14px #080812cc)
 }
 .car-world {
