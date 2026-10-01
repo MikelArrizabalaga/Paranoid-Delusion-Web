@@ -236,6 +236,18 @@ button {
 .route-status .station-link span {
   color:#e3dfe3
 }
+.route-status .station-link {
+  background:transparent;
+  border:0;
+  text-decoration:none;
+  cursor:pointer
+}
+.route-status .station-link.is-active {
+  color:#f5edf0
+}
+.route-status .station-link.is-active:after {
+  display:none
+}
 .route-status .route-track {
   background:#9b98a3;
   z-index:1
