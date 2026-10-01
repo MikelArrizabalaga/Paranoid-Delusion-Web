@@ -1962,7 +1962,7 @@ button {
   }
   .car-platform .hero-details {
     width:min(94vw,520px);
-    padding-top:20px
+    padding:20px 8px 0
   }
   .game-title-logo {
     width:min(285px,74vw);
@@ -1970,7 +1970,10 @@ button {
   }
   .car-platform .summary {
     font-size:10px;
-    max-width:340px
+    width:100%;
+    max-width:none;
+    overflow-wrap:anywhere;
+    white-space:normal
   }
   .car-platform .developer-row {
     font-size:6px
@@ -1978,6 +1981,41 @@ button {
   .car-platform .developer-row img {
     width:142px;
     max-height:44px
+  }
+}
+
+@media(max-width:400px) {
+  .topbar {
+    padding-inline:12px;
+    gap:7px
+  }
+  .game-brand {
+    width:136px;
+    flex-basis:136px
+  }
+  .studio-brand img {
+    width:78px
+  }
+  .menu-toggle {
+    width:34px;
+    min-width:34px
+  }
+  .route-status {
+    padding-inline:12px
+  }
+  .route-current {
+    font-size:8px;
+    letter-spacing:.06em
+  }
+  .car-platform .hero-details {
+    width:calc(100% - 10px);
+    padding-inline:12px
+  }
+  .car-platform .summary {
+    font-size:10px;
+    max-width:320px;
+    margin-inline:auto;
+    line-height:1.5
   }
 }
 /* Acabado de lanzamiento: ritmo, focos y señales de estación */
