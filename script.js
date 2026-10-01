@@ -129,6 +129,13 @@ document.querySelectorAll('a[href^="#station-"]').forEach((link) => {
   });
 });
 
+routeStops.forEach((stop, index) => {
+  stop.addEventListener('click', () => {
+    history.replaceState(null, '', `#${railcars[index].id}`);
+    goToStation(index);
+  });
+});
+
 window.addEventListener('load', () => {
   const targetIndex = stationIndexFromHash();
   if (targetIndex >= 0) goToStation(targetIndex, true);

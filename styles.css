@@ -143,11 +143,13 @@ button {
   display:none
 }
 .route-status {
-  height:38px;
-  padding:0 clamp(20px,5vw,78px);
+  height:58px;
+  padding:7px clamp(20px,5vw,78px) 8px;
   display:flex;
-  align-items:center;
-  gap:16px;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:7px;
   background:#393741;
   border-bottom:1px solid #fff3;
   color:#e6e4e0;
@@ -155,9 +157,9 @@ button {
   letter-spacing:.1em
 }
 .route-track {
-  height:1px;
+  width:100%;
+  height:5px;
   position:relative;
-  flex:1;
   background:#76727d
 }
 .route-fill {
@@ -168,17 +170,24 @@ button {
   transition:width .35s
 }
 .route-stop {
+  appearance:none;
+  padding:0;
   position:absolute;
   top:50%;
   left:var(--stop-position);
-  width:9px;
-  height:9px;
+  width:15px;
+  height:15px;
   transform:translate(-50%,-50%);
   border:2px solid #d9dce2;
   border-radius:50%;
   background:#393741;
   z-index:2;
   transition:background .25s,border-color .25s,box-shadow .25s
+}
+.route-stop:hover {
+  background:var(--route-accent);
+  border-color:var(--paper);
+  cursor:pointer
 }
 .route-stop.is-active {
   background:var(--route-accent);
@@ -195,13 +204,9 @@ button {
   color:#a5c1b2;
   font-style:normal
 }
-.route-hint {
-  white-space:nowrap;
-  color:#a9a5ae
-}
 .rail-track {
   width:100%;
-  height:calc(100svh - 116px);
+  height:calc(100svh - 136px);
   overflow-x:hidden;
   overflow-y:auto;
   scroll-snap-type:y mandatory;
@@ -219,7 +224,7 @@ button {
 .railcar {
   position:relative;
   width:100%;
-  min-height:calc(100svh - 116px);
+  min-height:calc(100svh - 136px);
   scroll-snap-align:start;
   scroll-snap-stop:always;
   overflow:hidden;
@@ -256,7 +261,7 @@ button {
 }
 .car-inner {
   width:min(100%,1500px);
-  min-height:calc(100svh - 116px);
+  min-height:calc(100svh - 136px);
   margin:auto;
   padding:clamp(28px,5vh,64px) clamp(24px,6vw,96px) 80px;
   position:relative;
@@ -973,21 +978,21 @@ button {
     background:#eee8dc
   }
   .route-status {
-    height:34px;
-    padding-inline:16px;
-    gap:10px
+    height:52px;
+    padding:6px 16px 8px;
+    gap:6px
   }
-  .route-current,.route-hint {
+  .route-current {
     font-size:7px
   }
   .rail-track,.railcar {
-    min-height:calc(100svh - 94px)
+    min-height:calc(100svh - 112px)
   }
   .rail-track {
-    height:calc(100svh - 94px)
+    height:calc(100svh - 112px)
   }
   .car-inner {
-    min-height:calc(100svh - 94px);
+    min-height:calc(100svh - 112px);
     padding:24px 18px 68px
   }
   .platform-layout {
@@ -1948,7 +1953,7 @@ button {
     background-position:center 54%
   }
   .car-platform .platform-layout {
-    min-height:calc(100svh - 94px)
+    min-height:calc(100svh - 112px)
   }
   .car-platform .hero-details {
     width:min(94vw,520px);
