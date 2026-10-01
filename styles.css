@@ -21,6 +21,7 @@
   --soft:#55525e;
   --paper:#f8f6f1;
   --green:#6e887b;
+  --route-accent:#c75b68;
   --line:#24232b2b;
   --display:Komikax,Impact,sans-serif;
   --hand:GraffitiCity,Impact,sans-serif;
@@ -154,7 +155,7 @@ button {
   letter-spacing:.1em
 }
 .route-track {
-  height:2px;
+  height:1px;
   position:relative;
   flex:1;
   background:#76727d
@@ -163,16 +164,29 @@ button {
   position:absolute;
   inset:0 auto 0 0;
   width:var(--route-progress,0%);
-  background:#a5c1b2;
+  background:var(--route-accent);
   transition:width .35s
 }
-.route-train {
+.route-stop {
   position:absolute;
   top:50%;
-  left:var(--route-progress,0%);
+  left:var(--stop-position);
+  width:9px;
+  height:9px;
   transform:translate(-50%,-50%);
-  color:var(--paper);
-  font-size:13px
+  border:2px solid #d9dce2;
+  border-radius:50%;
+  background:#393741;
+  z-index:2;
+  transition:background .25s,border-color .25s,box-shadow .25s
+}
+.route-stop.is-active {
+  background:var(--route-accent);
+  border-color:var(--paper);
+  box-shadow:0 0 0 3px #c75b6833
+}
+.route-train {
+  display:none
 }
 .route-current {
   white-space:nowrap

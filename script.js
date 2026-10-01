@@ -1,6 +1,7 @@
 const railTrack = document.querySelector('#rail-track');
 const railcars = [...document.querySelectorAll('.railcar:not(.car-news)')];
 const stationLinks = [...document.querySelectorAll('.station-link')];
+const routeStops = [...document.querySelectorAll('.route-stop')];
 const routeStatus = document.querySelector('.route-status');
 const routeCurrent = document.querySelector('.route-current');
 const stationNames = ['PARADA', 'TRAILER', 'NOTICIAS', 'PARANOID DELUSION'];
@@ -39,6 +40,7 @@ function syncStationFromScroll() {
   railcars.forEach((car, index) => { if (accumulated <= center) nextIndex = index; accumulated += car.offsetHeight; });
   activeIndex = nextIndex;
   railcars.forEach((car, index) => car.classList.toggle('is-current', index === activeIndex));
+  routeStops.forEach((stop, index) => stop.classList.toggle('is-active', index === activeIndex));
   stationLinks.forEach((link, index) => {
     const isActive = index === activeIndex;
     link.classList.toggle('is-active', isActive);
