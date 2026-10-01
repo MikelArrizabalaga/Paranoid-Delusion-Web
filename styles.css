@@ -1430,9 +1430,10 @@ button {
   transform:translate(-50%,-50%)
 }
 .car-world .banner-index {
-  right:50%;
-  transform:translateX(50%);
-  bottom:13px
+  top:14px;
+  right:18px;
+  bottom:auto;
+  transform:none
 }
 .car-world .journey-news {
   position:relative;
@@ -1651,14 +1652,14 @@ button {
     font-size:9px
   }
   .team-placeholder {
-    font-size:10px;
+    font-size:12px;
     line-height:1.55
   }
   .team-placeholder strong {
     font-size:24px
   }
   .member-bio {
-    font-size:9px!important;
+    font-size:10px!important;
     max-width:none
   }
 }
@@ -2095,5 +2096,40 @@ button {
   .car-world .journey-news-content {
     min-height:220px;
     padding:16px
+  }
+  .car-world .banner-copy {
+    width:calc(100% - 28px)
+  }
+  .car-world .banner-copy>p:last-child {
+    max-width:280px;
+    margin-inline:auto;
+    font-size:11px;
+    line-height:1.4
+  }
+  .car-world .banner-index {
+    top:9px;
+    right:12px;
+    bottom:auto;
+    transform:none;
+    font-size:8px;
+    white-space:nowrap
+  }
+  .car-world .journey-news-content>div {
+    font-size:9px
+  }
+  .car-world .journey-news-content>p:last-child {
+    font-size:11px;
+    line-height:1.5
+  }
+  .car-control {
+    width:36px;
+    min-width:36px;
+    height:36px;
+    justify-content:center;
+    gap:0;
+    padding:6px
+  }
+  .car-control span {
+    display:none
   }
 }
