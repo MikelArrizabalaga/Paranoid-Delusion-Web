@@ -1780,6 +1780,7 @@ button {
 }
 .car-platform .store-actions {
   justify-content:center;
+  gap:12px;
 }
 .car-platform .summary {
   margin:0 auto 18px;
@@ -1797,11 +1798,33 @@ button {
   border:0;
   background:transparent;
   box-shadow:none;
-  opacity:.82
+  opacity:1
 }
 .car-platform .developer-row img {
-  width:112px;
-  height:34px
+  width:140px;
+  height:40px;
+  filter:brightness(1.5) contrast(1.08) drop-shadow(0 4px 10px #080812cc)
+}
+.car-platform .button {
+  min-width:116px;
+  border-radius:2px;
+  letter-spacing:.02em;
+  box-shadow:0 8px 18px #08081255
+}
+.car-platform .button-primary {
+  min-width:146px;
+  background:var(--game-magenta);
+  color:#fff;
+}
+.car-platform .button-secondary {
+  background:#171521d9;
+  border-color:#f3ede366;
+  color:var(--game-paper);
+}
+.car-platform .button-secondary:hover {
+  border-color:var(--game-cyan);
+  background:#2b4050eb;
+  color:#fff;
 }
 .car-platform .hero-art-card {
   display:none
