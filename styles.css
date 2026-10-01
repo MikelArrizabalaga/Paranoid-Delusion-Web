@@ -211,13 +211,20 @@ button {
 }
 .route-status .station-nav {
   height:auto;
-  justify-content:center;
+  width:100%;
+  justify-content:space-between;
   align-items:center;
-  gap:clamp(14px,3vw,42px)
+  gap:0
 }
 .route-status .station-link {
   height:20px;
+  flex:1 1 25%;
+  justify-content:center;
   font-size:9px
+}
+.route-status .route-track {
+  background:#9b98a3;
+  z-index:1
 }
 .rail-track {
   width:100%;
@@ -1020,10 +1027,11 @@ button {
     background:transparent;
     border:0;
     flex-direction:row;
-    gap:12px
+    gap:0
   }
   .route-status .station-link {
     height:20px;
+    flex:1 1 25%;
     border:0;
     font-size:7px
   }
@@ -1445,7 +1453,7 @@ button {
   grid-column:1
 }
 .car-platform .hero-details {
-  display:none
+  display:block
 }
 .car-platform .hero-art-card {
   grid-column:2;
