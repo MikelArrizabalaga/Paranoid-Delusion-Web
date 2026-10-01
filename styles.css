@@ -198,10 +198,15 @@ button {
   display:none
 }
 .route-current {
+  width:100%;
+  color:var(--route-accent);
+  text-align:center;
+  line-height:1;
+  font-weight:700;
   white-space:nowrap
 }
 .route-current i {
-  color:#a5c1b2;
+  color:var(--route-accent);
   font-style:normal
 }
 .rail-track {
