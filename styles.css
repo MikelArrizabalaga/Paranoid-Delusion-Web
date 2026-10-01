@@ -1378,7 +1378,18 @@ button {
   align-self:center
 }
 .car-world .gallery-row {
-  grid-template-columns:repeat(4,1fr)
+  grid-template-columns:repeat(3,minmax(0,1fr))
+}
+.car-world .world-banner {
+  flex-basis:38vh;
+  min-height:250px;
+  max-height:400px
+}
+.car-world .gallery-row figure {
+  height:clamp(170px,20vh,220px)
+}
+.car-world .car-inner {
+  padding-bottom:64px
 }
 .car-world .saga-poster-card img {
   filter:saturate(.72) contrast(.92);

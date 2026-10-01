@@ -106,6 +106,16 @@ stationNav?.querySelectorAll('a').forEach((link) => {
   });
 });
 
+function stationIndexFromHash() {
+  const targetId = window.location.hash;
+  return railcars.findIndex((car) => `#${car.id}` === targetId);
+}
+
+window.addEventListener('hashchange', () => {
+  const targetIndex = stationIndexFromHash();
+  if (targetIndex >= 0) goToStation(targetIndex);
+});
+
 document.querySelectorAll('a[href^="#station-"]').forEach((link) => {
   link.addEventListener('click', (event) => {
     const targetId = link.getAttribute('href');
@@ -118,7 +128,8 @@ document.querySelectorAll('a[href^="#station-"]').forEach((link) => {
 });
 
 window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-  railTrack.scrollTop = 0;
+  const targetIndex = stationIndexFromHash();
+  if (targetIndex >= 0) goToStation(targetIndex, true);
+  else railTrack.scrollTop = 0;
   syncStationFromScroll();
 }, { once: true });
