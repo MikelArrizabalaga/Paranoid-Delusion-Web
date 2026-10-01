@@ -1787,10 +1787,11 @@ button {
   display:none
 }
 .game-title-logo {
-  width:min(360px,70vw);
+  width:min(420px,74vw);
   height:auto;
   margin:0 auto 14px;
-  filter:brightness(1.28) saturate(1.1) drop-shadow(0 5px 12px #080812cc)
+  opacity:1;
+  filter:brightness(1.62) contrast(1.08) saturate(1.18) drop-shadow(0 0 18px #090711e6) drop-shadow(0 6px 12px #080812cc)
 }
 .car-platform .genre {
   margin-bottom:13px;
@@ -1833,7 +1834,7 @@ button {
     padding-top:20px
   }
   .game-title-logo {
-    width:min(250px,68vw);
+    width:min(285px,74vw);
     margin-bottom:8px
   }
   .car-platform .summary {
