@@ -143,7 +143,7 @@ button {
   display:none
 }
 .route-status {
-  height:58px;
+  height:82px;
   padding:7px clamp(20px,5vw,78px) 8px;
   display:flex;
   flex-direction:column;
@@ -209,9 +209,19 @@ button {
   color:var(--route-accent);
   font-style:normal
 }
+.route-status .station-nav {
+  height:auto;
+  justify-content:center;
+  align-items:center;
+  gap:clamp(14px,3vw,42px)
+}
+.route-status .station-link {
+  height:20px;
+  font-size:9px
+}
 .rail-track {
   width:100%;
-  height:calc(100svh - 136px);
+  height:calc(100svh - 160px);
   overflow-x:hidden;
   overflow-y:auto;
   scroll-snap-type:y mandatory;
@@ -229,7 +239,7 @@ button {
 .railcar {
   position:relative;
   width:100%;
-  min-height:calc(100svh - 136px);
+  min-height:calc(100svh - 160px);
   scroll-snap-align:start;
   scroll-snap-stop:always;
   overflow:hidden;
@@ -266,7 +276,7 @@ button {
 }
 .car-inner {
   width:min(100%,1500px);
-  min-height:calc(100svh - 136px);
+  min-height:calc(100svh - 160px);
   margin:auto;
   padding:clamp(28px,5vh,64px) clamp(24px,6vw,96px) 80px;
   position:relative;
@@ -524,6 +534,21 @@ button {
   align-content:center;
   align-items:center;
   gap:20px 5vw
+}
+.car-screening .screening-layout {
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:auto auto;
+  gap:26px;
+  justify-items:center
+}
+.car-screening .car-heading {
+  grid-column:1;
+  text-align:center
+}
+.car-screening .video-column {
+  grid-column:1;
+  grid-row:2;
+  width:min(920px,100%)
 }
 .car-heading {
   grid-column:1;
@@ -983,21 +1008,44 @@ button {
     background:#eee8dc
   }
   .route-status {
-    height:52px;
+    height:76px;
     padding:6px 16px 8px;
     gap:6px
+  }
+  .route-status .station-nav {
+    display:flex;
+    position:static;
+    height:20px;
+    padding:0;
+    background:transparent;
+    border:0;
+    flex-direction:row;
+    gap:12px
+  }
+  .route-status .station-link {
+    height:20px;
+    border:0;
+    font-size:7px
+  }
+  .route-status .station-link.is-active:after {
+    top:auto;
+    left:0;
+    right:0;
+    bottom:0;
+    width:auto;
+    height:2px
   }
   .route-current {
     font-size:7px
   }
   .rail-track,.railcar {
-    min-height:calc(100svh - 112px)
+    min-height:calc(100svh - 136px)
   }
   .rail-track {
-    height:calc(100svh - 112px)
+    height:calc(100svh - 136px)
   }
   .car-inner {
-    min-height:calc(100svh - 112px);
+    min-height:calc(100svh - 136px);
     padding:24px 18px 68px
   }
   .platform-layout {
@@ -1396,6 +1444,9 @@ button {
 .car-platform .hero-details {
   grid-column:1
 }
+.car-platform .hero-details {
+  display:none
+}
 .car-platform .hero-art-card {
   grid-column:2;
   grid-row:1;
@@ -1740,7 +1791,10 @@ button {
   filter:saturate(.9) contrast(.96)
 }
 .journey-news-next .journey-news-image {
-  object-position:center 38%
+  object-position:center 16%
+}
+.journey-news:not(.journey-news-next) .journey-news-image {
+  object-position:center 20%
 }
 .journey-news-content {
   min-height:0;
