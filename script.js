@@ -1,163 +1,133 @@
 const railTrack = document.querySelector('#rail-track');
-const railcars = [...document.querySelectorAll('.railcar:not(.car-news)')];
+const railcars = [...document.querySelectorAll('.railcar')];
 const stationLinks = [...document.querySelectorAll('.station-link')];
-const routeStops = [...document.querySelectorAll('.route-stop')];
 const routeStatus = document.querySelector('.route-status');
 const routeCurrent = document.querySelector('.route-current');
-const stationNames = ['PARADA', 'TRAILER', 'NOTICIAS', 'PARANOID DELUSION'];
-let activeIndex = 0;
+const stationNames = ['INICIO', 'TRÁILER', 'NOTICIAS', 'ESTUDIO'];
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let activeIndex = -1;
+let scrollScheduled = false;
 
-function goToStation(index, instant = false) {
-  const target = railcars[Math.max(0, Math.min(index, railcars.length - 1))];
-  if (!target) return;
-  const top = railcars.slice(0, railcars.indexOf(target)).reduce((sum, car) => sum + car.offsetHeight, 0);
-  railTrack.scrollTo({ top, behavior: instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+function updateRouteProgress() {
+  const firstDot = stationLinks[0].querySelector('.station-dot').getBoundingClientRect();
+  const activeDot = stationLinks[activeIndex].querySelector('.station-dot').getBoundingClientRect();
+  const distance = activeDot.left + activeDot.width / 2 - firstDot.left - firstDot.width / 2;
+  routeStatus.style.setProperty('--route-progress', `${Math.max(0, distance)}px`);
 }
 
-const stationObserver = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    if (!entry.isIntersecting || entry.intersectionRatio < 0.55) continue;
-    activeIndex = railcars.indexOf(entry.target);
-    stationLinks.forEach((link, index) => {
-      const isActive = index === activeIndex;
-      link.classList.toggle('is-active', isActive);
-      if (isActive) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-    routeStatus.style.setProperty('--route-progress', `${(activeIndex / (railcars.length - 1)) * 100}%`);
-    routeCurrent.innerHTML = `ESTACIÓN 0${activeIndex + 1} <i>—</i> ${stationNames[activeIndex]}`;
-  }
-}, { root: railTrack, threshold: [0.55, 0.75] });
-
-railcars.forEach((car) => stationObserver.observe(car));
-
-// El indicador sigue siempre al vagón que ocupa el centro de la ventana.
-stationObserver.disconnect();
 function syncStationFromScroll() {
-  const center = railTrack.scrollTop + railTrack.clientHeight * 0.5;
+  const top = railTrack.getBoundingClientRect().top;
+  const activationLine = top + Math.min(100, railTrack.clientHeight * .2);
   let nextIndex = 0;
-  let accumulated = 0;
-  railcars.forEach((car, index) => { if (accumulated <= center) nextIndex = index; accumulated += car.offsetHeight; });
+  railcars.forEach((car, index) => {
+    if (car.getBoundingClientRect().top <= activationLine) nextIndex = index;
+  });
+  if (nextIndex === activeIndex) return;
   activeIndex = nextIndex;
   railcars.forEach((car, index) => car.classList.toggle('is-current', index === activeIndex));
-  routeStops.forEach((stop, index) => stop.classList.toggle('is-active', index === activeIndex));
   stationLinks.forEach((link, index) => {
-    const isActive = index === activeIndex;
-    link.classList.toggle('is-active', isActive);
-    if (isActive) link.setAttribute('aria-current', 'location');
+    const selected = index === activeIndex;
+    link.classList.toggle('is-active', selected);
+    if (selected) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
   });
-  routeStatus.style.setProperty('--route-progress', `${(activeIndex / (railcars.length - 1)) * 100}%`);
-  routeCurrent.innerHTML = `ESTACIÓN 0${activeIndex + 1} <i>—</i> ${stationNames[activeIndex]}`;
+  routeCurrent.textContent = `ESTACIÓN 0${activeIndex + 1} — ${stationNames[activeIndex]}`;
+  updateRouteProgress();
 }
-railTrack.addEventListener('scroll', syncStationFromScroll, { passive: true });
+
+function scheduleStationSync() {
+  if (scrollScheduled) return;
+  scrollScheduled = true;
+  requestAnimationFrame(() => {
+    scrollScheduled = false;
+    syncStationFromScroll();
+  });
+}
+
+function goToStation(index, instant = false) {
+  const target = railcars[index];
+  if (!target) return;
+  // Actual positions also work after images load or the viewport changes.
+  const top = target.getBoundingClientRect().top - railTrack.getBoundingClientRect().top + railTrack.scrollTop;
+  railTrack.scrollTo({ top, behavior: instant || reducedMotion.matches ? 'instant' : 'smooth' });
+}
+
+function followHash(instant = false) {
+  const index = railcars.findIndex((car) => `#${car.id}` === location.hash);
+  if (index >= 0) goToStation(index, instant);
+}
+
+railTrack.addEventListener('scroll', scheduleStationSync, { passive:true });
+window.addEventListener('resize', () => {
+  scheduleStationSync();
+  updateRouteProgress();
+}, { passive:true });
+window.addEventListener('hashchange', () => followHash());
+document.querySelectorAll('a[href^="#station-"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const hash = link.getAttribute('href');
+    const index = railcars.findIndex((car) => `#${car.id}` === hash);
+    if (index < 0) return;
+    event.preventDefault();
+    if (location.hash !== hash) history.pushState(null, '', hash);
+    goToStation(index);
+  });
+});
+window.addEventListener('load', () => {
+  followHash(true);
+  syncStationFromScroll();
+}, { once:true });
 syncStationFromScroll();
 
-// Un gesto de rueda avanza una sola parada. Así el final de cada vagón se puede leer
-// sin que el siguiente aparezca por accidente.
-let wheelDistance = 0;
-let wheelLocked = false;
-railTrack.addEventListener('wheel', (event) => {
-  if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
-  event.preventDefault();
-  if (wheelLocked) return;
-  wheelDistance += event.deltaY;
-  if (Math.abs(wheelDistance) < 90) return;
-  const step = wheelDistance > 0 ? 1 : -1;
-  wheelDistance = 0;
-  const nextIndex = Math.max(0, Math.min(activeIndex + step, railcars.length - 1));
-  if (nextIndex === activeIndex) return;
-  wheelLocked = true;
-  goToStation(nextIndex);
-  window.setTimeout(() => { wheelLocked = false; }, 850);
-}, { passive: false });
-
-railTrack.addEventListener('keydown', (event) => {
-  if (event.target !== railTrack || !['ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown'].includes(event.key)) return;
-  event.preventDefault();
-  const step = event.key === 'ArrowLeft' || event.key === 'PageUp' ? -1 : 1;
-  goToStation(activeIndex + step);
-});
+// Sections animate on visibility; tall news articles stay readable throughout.
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => entry.target.classList.toggle('is-in-view', entry.isIntersecting));
+  }, { root:railTrack, threshold:0 });
+  railcars.forEach((car) => observer.observe(car));
+  document.body.classList.add('motion-ready');
+}
 
 const trailerSources = {
-  es: { src: 'Spanish-Trailer.mp4', label: 'Tráiler en español', shortLabel: 'ESPAÑOL' },
-  en: { src: 'English-Trailer.mp4', label: 'Trailer in English', shortLabel: 'ENGLISH' },
-  jp: { src: 'Japanish-Trailer.mp4', label: '日本語トレーラー', shortLabel: '日本語' },
+  es:{ src:'Spanish-Trailer.mp4', label:'Tráiler en español de The Next Stop' },
+  en:{ src:'English-Trailer.mp4', label:'The Next Stop trailer in English' },
+  jp:{ src:'Japanish-Trailer.mp4', label:'The Next Stop 日本語トレーラー' },
 };
-
 const trailerVideo = document.querySelector('#trailer-video');
-const languageLabel = document.querySelector('#language-label');
-const languageButtons = document.querySelectorAll('.lang-chip');
+const videoStatus = document.querySelector('#video-status');
+const languageButtons = [...document.querySelectorAll('.lang-chip')];
+let trailerChange = 0;
 
 languageButtons.forEach((button) => {
   button.addEventListener('click', () => {
+    if (button.getAttribute('aria-pressed') === 'true') return;
     const trailer = trailerSources[button.dataset.language];
     if (!trailer) return;
-
+    const change = ++trailerChange;
     const wasPlaying = !trailerVideo.paused;
     trailerVideo.pause();
     trailerVideo.src = trailer.src;
     trailerVideo.setAttribute('aria-label', trailer.label);
-    languageLabel.textContent = trailer.shortLabel;
     languageButtons.forEach((item) => {
-      const isSelected = item === button;
-      item.classList.toggle('is-active', isSelected);
-      item.setAttribute('aria-pressed', String(isSelected));
+      item.classList.toggle('is-active', item === button);
+      item.setAttribute('aria-pressed', String(item === button));
     });
+    videoStatus.textContent = `Idioma seleccionado: ${button.textContent}.`;
     trailerVideo.load();
-    if (wasPlaying) trailerVideo.play().catch(() => {});
+    if (wasPlaying) {
+      trailerVideo.play().catch(() => {
+        if (change === trailerChange) videoStatus.textContent = 'Pulsa reproducir para continuar con el tráiler.';
+      });
+    }
   });
 });
-
-const menuToggle = document.querySelector('.menu-toggle');
-const stationNav = document.querySelector('.station-nav');
-
-menuToggle?.addEventListener('click', () => {
-  const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-  menuToggle.setAttribute('aria-expanded', String(!isOpen));
-  menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
-  stationNav.classList.toggle('is-open', !isOpen);
+trailerVideo.addEventListener('error', () => {
+  videoStatus.textContent = 'No se ha podido cargar el tráiler. Prueba otro idioma o vuelve a reproducirlo.';
 });
-
-stationNav?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    stationNav.classList.remove('is-open');
-    menuToggle?.setAttribute('aria-expanded', 'false');
-    menuToggle?.setAttribute('aria-label', 'Abrir menú');
-  });
-});
-
-function stationIndexFromHash() {
-  const targetId = window.location.hash;
-  return railcars.findIndex((car) => `#${car.id}` === targetId);
+if ('IntersectionObserver' in window) {
+  const videoObserver = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting && !trailerVideo.paused) trailerVideo.pause();
+  }, { root:railTrack });
+  videoObserver.observe(trailerVideo);
 }
-
-window.addEventListener('hashchange', () => {
-  const targetIndex = stationIndexFromHash();
-  if (targetIndex >= 0) goToStation(targetIndex);
-});
-
-document.querySelectorAll('a[href^="#station-"]').forEach((link) => {
-  link.addEventListener('click', (event) => {
-    const targetId = link.getAttribute('href');
-    const targetIndex = railcars.findIndex((car) => `#${car.id}` === targetId);
-    if (targetIndex < 0) return;
-    event.preventDefault();
-    history.replaceState(null, '', targetId);
-    goToStation(targetIndex);
-  });
-});
-
-routeStops.forEach((stop, index) => {
-  stop.addEventListener('click', () => {
-    history.replaceState(null, '', `#${railcars[index].id}`);
-    goToStation(index);
-  });
-});
-
-window.addEventListener('load', () => {
-  const targetIndex = stationIndexFromHash();
-  if (targetIndex >= 0) goToStation(targetIndex, true);
-  else railTrack.scrollTop = 0;
-  syncStationFromScroll();
-}, { once: true });
