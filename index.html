@@ -3,86 +3,132 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111012">
-  <meta name="description" content="The Next Stop: una aventura point and click de misterio psicológico creada por Paranoid-Delusion.">
+  <meta name="theme-color" content="#25252b">
+  <meta name="description" content="Descubre The Next Stop, una aventura point and click de misterio psicológico de Paranoid-Delusion. Tráiler, noticias y equipo del estudio.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Next Stop — Paranoid-Delusion">
+  <meta property="og:description" content="Explora, observa y sigue el misterio hasta la próxima parada. Descubre el juego, el tráiler y sus últimas noticias.">
   <title>The Next Stop — Paranoid-Delusion</title>
+  <link rel="preload" as="image" href="New-Key-Art.jpeg" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#rail-track">Saltar al viaje</a>
+  <a class="skip-link" href="#rail-track">Saltar al contenido</a>
   <header class="topbar">
-    <a class="game-brand" href="#station-01" aria-label="The Next Stop, inicio"><img src="The-Next-Stop-Logo.png" alt="The Next Stop"></a>
-    <a class="studio-brand" href="#station-05" aria-label="Paranoid-Delusion, el estudio"><span>UN JUEGO DE</span><img src="ParanoidDelusion_LogoName.png" alt="Paranoid Delusion"></a>
+    <a class="game-brand" href="#station-01" aria-label="The Next Stop, inicio"><img src="assets/optimized/game-logo.webp" width="1000" height="346" decoding="async" alt="The Next Stop"></a>
+    <a class="studio-brand" href="#station-05" aria-label="Conoce a Paranoid-Delusion"><span>UN JUEGO DE</span><img src="assets/optimized/studio-logo.webp" width="900" height="481" decoding="async" alt="Paranoid-Delusion"></a>
   </header>
-
-  <div class="route-status" aria-label="Progreso del recorrido"><span class="route-current">ESTACIÓN 01 <i>—</i> PARADA</span><div class="route-track"><span class="route-fill"></span><button class="route-stop is-active" type="button" style="--stop-position:0%" aria-label="Ir a la estación 01: Parada"></button><button class="route-stop" type="button" style="--stop-position:33.333%" aria-label="Ir a la estación 02: Tráiler"></button><button class="route-stop" type="button" style="--stop-position:66.666%" aria-label="Ir a la estación 03: Noticias"></button><button class="route-stop" type="button" style="--stop-position:100%" aria-label="Ir a la estación 04: Paranoid Delusion"></button></div><nav class="station-nav" id="station-nav" aria-label="Paradas del recorrido"><a class="station-link is-active" href="#station-01" aria-current="location"><span>01</span> PARADA</a><a class="station-link" href="#station-02"><span>02</span> TRAILER</a><a class="station-link" href="#station-03"><span>03</span> NOTICIAS</a><a class="station-link" href="#station-05"><span>04</span> PARANOID DELUSION</a></nav></div>
-
-  <main class="rail-track" id="rail-track" tabindex="0" aria-label="Recorrido vertical por The Next Stop">
-    <section class="railcar car-platform is-current" id="station-01" aria-labelledby="title-game">
+  <div class="route-status" aria-label="Progreso del recorrido">
+    <span class="route-current">ESTACIÓN 01 — INICIO</span>
+    <nav class="station-nav" aria-label="Paradas del recorrido">
+      <span class="route-fill" aria-hidden="true"></span>
+      <a class="station-link is-active" href="#station-01" aria-current="location"><span class="station-dot" aria-hidden="true"></span><span class="station-label"><span class="station-number">01</span>Inicio</span></a>
+      <a class="station-link" href="#station-02"><span class="station-dot" aria-hidden="true"></span><span class="station-label"><span class="station-number">02</span>Tráiler</span></a>
+      <a class="station-link" href="#station-03"><span class="station-dot" aria-hidden="true"></span><span class="station-label"><span class="station-number">03</span>Noticias</span></a>
+      <a class="station-link" href="#station-05"><span class="station-dot" aria-hidden="true"></span><span class="station-label"><span class="station-number">04</span>Estudio</span></a>
+    </nav>
+  </div>
+  <main class="rail-track" id="rail-track" tabindex="0" aria-label="The Next Stop">
+    <section class="railcar car-platform is-current is-in-view" id="station-01" aria-labelledby="title-game">
       <div class="car-inner platform-layout">
-        <div class="hero-details">
-          <div class="breadcrumbs"><span>PARANOID-DELUSION</span><span>›</span><span>THE NEXT STOP</span></div>
-          <p class="eyebrow"><span class="status-dot"></span> AVENTURA NARRATIVA INDEPENDIENTE</p>
-          <img class="game-title-logo" src="The-Next-Stop-Logo.png" alt="The Next Stop">
+        <div class="hero-details station-content">
+          <p class="eyebrow">Una aventura de misterio psicológico</p>
+          <img class="game-title-logo" src="assets/optimized/game-logo.webp" width="1000" height="346" fetchpriority="high" decoding="async" alt="The Next Stop">
           <h1 class="sr-only" id="title-game">The Next Stop</h1>
-          <p class="genre">A Psychological Mystery Game <i>·</i> Point &amp; Click</p>
-          <p class="summary">Una aventura point and click de misterio psicológico. Explora, observa cada detalle y deja que la historia te lleve a la próxima parada.</p>
-          <div class="tags"><span>MISTERIO PSICOLÓGICO</span><span>POINT &amp; CLICK</span><span>AVENTURA NARRATIVA</span></div>
-          <div class="store-actions"><a class="button button-primary" href="#station-02"><span class="play-icon">▶</span> Ver tráiler</a><a class="button button-secondary" href="https://store.steampowered.com/app/3795470/The_Next_Stop/?l=spanish" target="_blank" rel="noopener">Steam <span>↗</span></a><a class="button button-secondary" href="https://paranoiddelusion.itch.io/thenextstop" target="_blank" rel="noopener">itch.io <span>↗</span></a></div>
-          <div class="developer-row" aria-label="Paranoid-Delusion"><img src="ParanoidDelusion_LogoName.png" alt="Paranoid-Delusion"></div>
+          <p class="genre">A Psychological Mystery Game <i aria-hidden="true">·</i> Point &amp; Click</p>
+          <p class="summary">Explora, observa cada detalle y deja que la historia te lleve a la próxima parada.</p>
+          <div class="tags" aria-label="Géneros del juego"><span>Misterio psicológico</span><span>Point &amp; click</span><span>Aventura narrativa</span></div>
+          <div class="store-actions">
+            <a class="button button-primary" href="https://store.steampowered.com/app/3795470/The_Next_Stop/?l=spanish" target="_blank" rel="noopener">Ver en Steam <span aria-hidden="true">↗</span><span class="sr-only">, se abre en una pestaña nueva</span></a>
+            <a class="button button-secondary" href="#station-02"><span aria-hidden="true">▷</span> Ver tráiler</a>
+            <a class="button button-secondary" href="https://paranoiddelusion.itch.io/thenextstop" target="_blank" rel="noopener">itch.io <span aria-hidden="true">↗</span><span class="sr-only">, se abre en una pestaña nueva</span></a>
+          </div>
+          <a class="scroll-cue" href="#station-02">Continúa el recorrido <span aria-hidden="true">↓</span></a>
         </div>
-        <figure class="hero-art-card"><img src="TheNextStop_Keyart_Dark.png" alt="Ilustración de The Next Stop: personajes en un vagón de metro nocturno"><figcaption>THE NEXT STOP <i>—</i> KEY ART</figcaption></figure>
-        <div class="car-caption"><span>01</span><span>PARADA</span><span>THE NEXT STOP</span></div>
+        <div class="car-caption" aria-hidden="true"><span>01</span><span>EL JUEGO</span><span>THE NEXT STOP</span></div>
       </div>
     </section>
-
     <section class="railcar car-screening" id="station-02" aria-labelledby="title-trailer">
       <div class="car-inner screening-layout">
-        <div class="car-heading"><p class="eyebrow">02 / PROYECCIÓN A BORDO</p><h2 id="title-trailer">PARADA<br><em>TRAILER.</em></h2><p>El tráiler de <strong>The Next Stop</strong>.</p></div>
-        <div class="video-column">
-        <div class="video-frame"><video id="trailer-video" controls playsinline preload="metadata" poster="New-Key-Art.jpeg" aria-label="Tráiler en español de The Next Stop"><source src="Spanish-Trailer.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video></div>
-          <div class="language-row"><span>ELIGE TU IDIOMA</span><button class="lang-chip is-active" data-language="es" aria-pressed="true">ESPAÑOL</button><button class="lang-chip" data-language="en" aria-pressed="false">ENGLISH</button><button class="lang-chip" data-language="jp" aria-pressed="false">日本語</button><span class="trailer-label">TRÁILER OFICIAL <i>·</i> <b id="language-label">ESPAÑOL</b></span></div>
+        <div class="car-heading station-content">
+          <p class="eyebrow">02 / Primera mirada</p>
+          <h2 id="title-trailer">La próxima<br><em>parada.</em></h2>
+          <p>Entra en el mundo de The Next Stop con su tráiler oficial.</p>
         </div>
-        <div class="car-caption"><span>02</span><span>PARADA</span><span>TRAILER</span></div>
+        <div class="video-column station-content">
+          <div class="video-frame"><video id="trailer-video" controls playsinline preload="none" poster="New-Key-Art.jpeg" aria-label="Tráiler en español de The Next Stop"><source src="Spanish-Trailer.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo. <a href="Spanish-Trailer.mp4">Abrir el tráiler</a>.</video></div>
+          <div class="language-row" role="group" aria-label="Idioma del tráiler">
+            <span>Idioma del tráiler</span>
+            <button class="lang-chip is-active" type="button" data-language="es" aria-pressed="true">Español</button>
+            <button class="lang-chip" type="button" data-language="en" aria-pressed="false" lang="en">English</button>
+            <button class="lang-chip" type="button" data-language="jp" aria-pressed="false" lang="ja">日本語</button>
+          </div>
+          <p class="video-status" id="video-status" role="status"></p>
+        </div>
+        <div class="car-caption" aria-hidden="true"><span>02</span><span>TRÁILER OFICIAL</span><span>THE NEXT STOP</span></div>
       </div>
     </section>
-
     <section class="railcar car-world" id="station-03" aria-labelledby="title-world">
       <div class="car-inner world-layout">
-        <div class="world-banner"><img src="header.png" alt="La figura protagonista de The Next Stop, suspendida sobre un tren en una ciudad cubierta de niebla"><div class="banner-copy"><p class="eyebrow">03 / PARADAS DEL PROYECTO</p><h2 id="title-world">PARADA<br><em>NOTICIAS.</em></h2><p>Noticias, encuentros y próximas señales de The Next Stop.</p></div><span class="banner-index">N.º 01 — EL VIAJE</span></div>
-        <div class="gallery-row journey-news-grid">
-          <article class="journey-news journey-news-next is-pinned"><img class="journey-news-image" src="assets/web/saga-poster.jpg" alt="Cartel de SAGA 2026 en Fira Barcelona Montjuïc"><div class="journey-news-content"><div><span class="journey-number">01</span><span class="journey-state">PRÓXIMA PARADA</span></div><p class="journey-kicker">SAGA 2026</p><h3>Fira Barcelona Montjuïc.</h3><p>Estaremos los días 9, 10 y 11 de octubre en SAGA. Nos vemos allí.</p></div></article>
-          <article class="journey-news"><img class="journey-news-image" src="assets/news/game-eus-2026.png" alt="Iván y Lidia en el programa Game.eus"><div class="journey-news-content"><div><span class="journey-number">02</span><span class="journey-state">15.06 — 23.07.2026</span></div><p class="journey-kicker">GAME.EUS</p><h3>Seis semanas para crecer.</h3><p>Participamos en la incubadora vasca Game.eus, en Gasteiz, durante seis semanas de trabajo y aprendizaje.</p></div></article>
-          <article class="journey-news"><img class="journey-news-image" src="assets/news/gamescom-2026.png" alt="Key art de The Next Stop presentado en Gamescom"><div class="journey-news-content"><div><span class="journey-number">03</span><span class="journey-state">YA PASÓ</span></div><p class="journey-kicker">GAMESCOM 2026</p><h3>Nos vemos en la feria.</h3><p>En 2026 llevamos The Next Stop a Gamescom y compartimos el proyecto con nuevos jugadores.</p></div></article>
+        <div class="world-heading station-content">
+          <div><p class="eyebrow">03 / El proyecto en marcha</p><h2 id="title-world">Noticias<br><em>del viaje.</em></h2></div>
+          <p class="section-intro">Encuentros, ferias y momentos que forman parte del desarrollo de The Next Stop.</p>
         </div>
-        <div class="car-caption"><span>03</span><span>PARADA</span><span>NOTICIAS</span></div>
+        <div class="journey-news-grid station-content">
+          <article class="journey-news journey-news-next" aria-labelledby="news-saga">
+            <img class="journey-news-image" src="assets/optimized/saga-poster.webp" width="900" height="1687" loading="lazy" decoding="async" alt="Cartel de SAGA 2026 en Fira Barcelona Montjuïc">
+            <div class="journey-news-content">
+              <div class="journey-meta"><span class="journey-badge">Próxima parada</span><span><time datetime="2026-10-09">9</time>–<time datetime="2026-10-11">11 de octubre de 2026</time></span></div>
+              <p class="journey-kicker">SAGA 2026</p>
+              <h3 id="news-saga">Nos vemos en Barcelona.</h3>
+              <p>Estaremos en SAGA, en Fira Barcelona Montjuïc, los días 9, 10 y 11 de octubre. Ven a conocer The Next Stop y al equipo de Paranoid-Delusion.</p>
+            </div>
+          </article>
+          <article class="journey-news" aria-labelledby="news-gameeus">
+            <img class="journey-news-image" src="assets/optimized/game-eus-2026.webp" width="900" height="675" loading="lazy" decoding="async" alt="Iván González y Lidia Trujillo durante Game.eus">
+            <div class="journey-news-content">
+              <div class="journey-meta"><span><time datetime="2026-06-15">15 de junio</time> – <time datetime="2026-07-23">23 de julio de 2026</time></span></div>
+              <p class="journey-kicker">Game.eus</p>
+              <h3 id="news-gameeus">Seis semanas para crecer.</h3>
+              <p>Participamos en la incubadora vasca Game.eus, en Gasteiz: seis semanas de trabajo y aprendizaje para seguir dando forma al proyecto.</p>
+            </div>
+          </article>
+          <article class="journey-news" aria-labelledby="news-gamescom">
+            <img class="journey-news-image" src="assets/optimized/gamescom-2026.webp" width="616" height="353" loading="lazy" decoding="async" alt="Ilustración de The Next Stop presentada en Gamescom">
+            <div class="journey-news-content">
+              <div class="journey-meta"><span>2026 / Encuentros</span></div>
+              <p class="journey-kicker">Gamescom</p>
+              <h3 id="news-gamescom">El viaje pasó por Gamescom.</h3>
+              <p>Llevamos The Next Stop a Gamescom y compartimos el proyecto con nuevos jugadores.</p>
+            </div>
+          </article>
+        </div>
+        <div class="car-caption" aria-hidden="true"><span>03</span><span>NOTICIAS</span><span>PARANOID-DELUSION</span></div>
       </div>
     </section>
-
-    <section class="railcar car-news" id="station-04" aria-labelledby="title-news">
-      <div class="car-inner news-layout">
-        <div class="news-heading"><div><p class="eyebrow">04 / PARTE DE LA LÍNEA</p><h2 id="title-news">NOTICIAS<br><em>DEL VIAJE.</em></h2></div><p>Las novedades de The Next Stop<br>se publicarán aquí.</p></div>
-        <div class="news-grid">
-          <article class="news-card news-card-featured"><div class="news-card-top"><span>01</span><time datetime="2026-10">PRÓXIMAMENTE</time></div><div><p class="news-type">DESARROLLO</p><h3>El viaje acaba de empezar</h3><p>Seguimos trabajando en The Next Stop para construir un misterio que quieras explorar hasta la última parada.</p></div><a href="#station-02" aria-label="Ver el tráiler de The Next Stop">VER EL TRÁILER <b>↗</b></a></article>
-          <article class="news-card"><div class="news-card-top"><span>02</span><time datetime="2026-10">EN LÍNEA</time></div><div><p class="news-type">THE NEXT STOP</p><h3>Ya puedes encontrarnos</h3><p>Descubre el juego y sigue el proyecto en nuestras páginas de Steam e itch.io.</p></div><div class="news-links"><a href="https://store.steampowered.com/app/3795470/The_Next_Stop/?l=spanish" target="_blank" rel="noopener">STEAM ↗</a><a href="https://paranoiddelusion.itch.io/thenextstop" target="_blank" rel="noopener">ITCH.IO ↗</a></div></article>
-          <article class="news-card"><div class="news-card-top"><span>03</span><time datetime="2026-10">ADELANTO</time></div><div><p class="news-type">PARANOID-DELUSION</p><h3>Más información, muy pronto</h3><p>Personajes, making of y nuevas señales aparecerán en esta línea de noticias.</p></div><span class="news-lock">PRÓXIMA PARADA <b>→</b></span></article>
-        </div>
-        <div class="car-caption"><span>04</span><span>NOTICIAS</span><span>ÚLTIMA HORA</span></div>
-      </div>
-    </section>
-
     <section class="railcar car-crew" id="station-05" aria-labelledby="title-crew">
       <div class="car-inner crew-layout">
-        <div class="studio-heading"><div><p class="eyebrow">05 / QUIÉN ESTÁ DETRÁS</p><h2 id="title-crew">PARADA<br><em>PARANOID-DELUSION.</em></h2></div></div><nav class="social-links crew-socials" aria-label="Redes sociales de Paranoid-Delusion"><a href="https://es.linkedin.com/company/paranoiddelusion" target="_blank" rel="noopener">LinkedIn</a><a href="https://x.com/ParanoidDlusion" target="_blank" rel="noopener">X</a><a href="https://www.instagram.com/paranoiddlusion/" target="_blank" rel="noopener">Instagram</a></nav>
-        <p class="team-placeholder"><strong>Quiénes somos</strong> — texto provisional. Aquí hablaremos de nuestra forma de crear, de las historias que nos inspiran y de cómo trabajamos juntos.</p>
-        <div class="team-grid">
-          <article class="team-card"><span class="member-number">01</span><img class="member-photo" src="assets/team/ivan-gonzalez.png" alt="Iván González"><div><h3>Iván González</h3><p>Diseñador <i>·</i> Guionista</p><p class="member-bio">Texto provisional sobre su mirada creativa y su trabajo en el estudio.</p></div></article>
-          <article class="team-card"><span class="member-number">02</span><img class="member-photo" src="assets/team/lidia-trujillo.png" alt="Lidia Trujillo"><div><h3>Lidia Trujillo</h3><p>Artista</p><p class="member-bio">Texto provisional sobre su universo visual y su forma de dar vida al juego.</p></div></article>
-          <article class="team-card"><span class="member-number">03</span><img class="member-photo" src="assets/team/mikel-arrizabalaga.png" alt="Mikel Arrizabalaga"><div><h3>Mikel Arrizabalaga</h3><p>Programador</p><p class="member-bio">Texto provisional sobre la tecnología y los sistemas que construye.</p></div></article>
+        <div class="studio-heading station-content">
+          <div><p class="eyebrow">04 / Detrás del juego</p><h2 id="title-crew">Paranoid-<em>Delusion.</em></h2></div>
+          <nav class="social-links" aria-label="Redes sociales de Paranoid-Delusion">
+            <a href="https://es.linkedin.com/company/paranoiddelusion" target="_blank" rel="noopener" aria-label="LinkedIn, se abre en una pestaña nueva">LinkedIn ↗</a>
+            <a href="https://x.com/ParanoidDlusion" target="_blank" rel="noopener" aria-label="X, se abre en una pestaña nueva">X ↗</a>
+            <a href="https://www.instagram.com/paranoiddlusion/" target="_blank" rel="noopener" aria-label="Instagram, se abre en una pestaña nueva">Instagram ↗</a>
+          </nav>
         </div>
-        <div class="crew-bottom"><p class="more-soon">MÁS SOBRE EL ESTUDIO, PRÓXIMAMENTE <span>↗</span></p><footer class="footer"><img src="ParanoidDelusion_LogoName.png" alt="Paranoid-Delusion"><span>© 2026 PARANOID-DELUSION</span><a class="footer-back" href="#station-01">VOLVER AL ANDÉN ↑</a></footer></div>
-        <div class="car-caption"><span>04</span><span>PARADA</span><span>PARANOID DELUSION</span></div>
+        <p class="team-intro station-content">El equipo detrás de The Next Stop. Diseño, narrativa, arte y programación se encuentran para dar forma a esta aventura de misterio psicológico.</p>
+        <div class="team-grid station-content">
+          <article class="team-card"><img class="member-photo" src="assets/optimized/ivan-gonzalez.webp" width="640" height="640" loading="lazy" decoding="async" alt="Iván González"><div><h3>Iván González</h3><p>Diseño y guion</p></div></article>
+          <article class="team-card"><img class="member-photo" src="assets/optimized/lidia-trujillo.webp" width="640" height="641" loading="lazy" decoding="async" alt="Lidia Trujillo"><div><h3>Lidia Trujillo</h3><p>Arte</p></div></article>
+          <article class="team-card"><img class="member-photo" src="assets/optimized/mikel-arrizabalaga.webp" width="640" height="640" loading="lazy" decoding="async" alt="Mikel Arrizabalaga"><div><h3>Mikel Arrizabalaga</h3><p>Programación</p></div></article>
+        </div>
+        <section class="studio-contact station-content" aria-labelledby="contact-title">
+          <div><h3 id="contact-title">Contacto</h3><p>Escríbenos para hablar de The Next Stop.</p></div>
+          <a class="contact-link" href="mailto:paranoiddelusionstudios@gmail.com"><span>paranoiddelusionstudios@gmail.com</span><span aria-hidden="true">↗</span></a>
+        </section>
+        <div class="studio-actions station-content"><p>Sigue las próximas novedades del juego.</p><a class="button button-secondary" href="https://store.steampowered.com/app/3795470/The_Next_Stop/?l=spanish" target="_blank" rel="noopener" aria-label="The Next Stop en Steam, se abre en una pestaña nueva">The Next Stop en Steam <span aria-hidden="true">↗</span></a></div>
+        <footer class="footer"><img src="assets/optimized/studio-logo.webp" width="900" height="481" loading="lazy" decoding="async" alt="Paranoid-Delusion"><span>© 2026 Paranoid-Delusion</span><a class="footer-back" href="#station-01">Volver al inicio ↑</a></footer>
       </div>
     </section>
   </main>
